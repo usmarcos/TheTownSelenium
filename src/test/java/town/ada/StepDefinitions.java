@@ -16,7 +16,7 @@ public class StepDefinitions {
 
     @Then("the scenario passes")
     public void theScenarioPasses() {
-        System.out.println("Teste");
+        System.out.println("Teste 2");
     }
 
 }
