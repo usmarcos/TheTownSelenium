@@ -1,6 +1,6 @@
-Feature: An example
+Feature: An access page
 
-  Scenario: The example
-    Given an example scenario
-    When all step definitions are implemented
-    Then the scenario passes
+  Scenario: Access Informations page
+    Given I am in the town page 'https://thetown.com.br/pt/'
+    When I click in 'Informações' link
+    Then I must redirect to '/informacoes' page
