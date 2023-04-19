@@ -1,22 +1,15 @@
 package town.ada.core;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 
 public class DriverFactory {
-
     private static WebDriver driver;
-
-    private DriverFactory(){}
-
     public static WebDriver getDriver(){
         if (driver == null) {
-            EdgeOptions options = new EdgeOptions();
-            options.addArguments("--remote-allow-origins=*");
-            driver = new EdgeDriver(options);
-            driver.manage().window().setSize(new Dimension(1200, 765));
+            driver = new EdgeDriver();
+            driver.manage().window().maximize();
+            driver.get("https://thetown.com.br/pt/");
         }
         return driver;
     }

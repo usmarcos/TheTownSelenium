@@ -1,18 +1,17 @@
 package town.ada.setpsDefinitions;
 
+import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static town.ada.core.DriverFactory.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static town.ada.core.DriverFactory.getDriver;
+import static town.ada.core.DriverFactory.killDriver;
 
-import org.junit.jupiter.api.AfterAll;
-import town.ada.page.BaseAccess;
 
-public class DisponibilidadeStepDefinition extends BaseAccess {
+public class DisponibilidadeStepDefinition {
     @Dado("que o usuário acesse a página")
     public void que_o_usuário_acesse_a_página() {
-        setUp();
         assertEquals(getDriver().getCurrentUrl(), "https://thetown.com.br/pt/");
     }
 
@@ -21,9 +20,9 @@ public class DisponibilidadeStepDefinition extends BaseAccess {
         assertEquals(getDriver().getTitle(), string);
     }
 
-    @AfterAll
-    public void fecharNavegacao() {
-        tearDown();
+    @After
+    public void closeBrowser() {
+        killDriver();
     }
 
 }
