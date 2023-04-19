@@ -2,16 +2,15 @@ package town.ada;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Entao;
+import io.cucumber.java.pt.Quando;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class StepHistory1Definitions {
+public class StepHistory1_1Definitions {
     private WebDriver driver;
 
     @Before
@@ -22,19 +21,19 @@ public class StepHistory1Definitions {
         driver = new ChromeDriver();
     }
 
-    @Given("I am in the town page {string}")
+    @Dado("que estou na página do the town {string}")
     public void i_am_in_the_town_page(String url) {
         driver.get(url);
         driver.manage().window().maximize();
     }
 
-    @When("I click in {string} link")
+    @Quando("clicar no link {string}")
     public void i_click_in_informations_link(String informations) {
         driver.findElement(By.linkText(informations.toUpperCase())).click();
     }
 
-    @Then("I must redirect to {string} page")
-    public void i_must_redirect_to_informations_page(String informations) {
+    @Entao("devo ser redirecionado para a pagina de {string}")
+    public void i_must_be_redirect_to_informations_page(String informations) {
         String page = driver.getCurrentUrl();
         Assertions.assertTrue(page.contains(informations));
     }
