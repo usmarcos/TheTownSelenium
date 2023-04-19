@@ -5,12 +5,13 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Quando;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class StepHistory1_4DEfinitions {
+public class StepHistory1_4Definitions {
     private WebDriver driver;
 
     @Before
@@ -29,24 +30,34 @@ public class StepHistory1_4DEfinitions {
 
     @Quando("descer a página até a sessão de DÚVIDAS MAIS FREQUENTES e selecionado o dropdown de QUANDO E ONDE ACONTECERÁ")
     public void descer_ate_sessao_duvidas_dropdown() {
-        //Referencia: https://pt.stackoverflow.com/questions/223957/algu%C3%A9m-sabe-como-posso-fazer-scroll-no-selenium-webdriver-em-java
+        /*Referencia: https://pt.stackoverflow.com/questions/223957/algu%C3%A9m-sabe-como-posso-fazer-scroll-no-selenium-webdriver-em-java
+        * Scripts para controlar a barra de rolagem pela posição*/
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("scrollBy(0,700)", "");
+        jse.executeScript("scrollBy(0,2346)", "");
+        /*Aguardar o carregamento da página, caso contrário retorna erro pois o botão de dropdown não aparece e não
+        * fica clicável*/
+        this.waitLoad(3000L);
         driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/section[6]/div[2]/div[1]/div[1]/h2/button")).click();
     }
 
     @Then("deverá ser exibido em tela as seguintes informações {string}")
     public void devera_exibir_informacoes(String texto) {
-        try {
-            Thread.sleep(2000);
-            System.out.println(texto);
-        } catch (Exception e){
-            System.out.println("Ola");
-        }
+        String txt = driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/section[6]/div[2]/div[1]/div[1]/div/div/p[1]")).getText();
+        Assertions.assertEquals(texto, txt);
     }
 
     @After
     public void stop() {
+        /*Tempo para ver a página antes de encerrar*/
+        this.waitLoad(2000L);
         driver.quit();
+    }
+
+    private void waitLoad(Long time) {
+        try {
+            Thread.sleep(time);
+        } catch (Exception e) {
+            System.out.println("Não deu certo");
+        }
     }
 }
