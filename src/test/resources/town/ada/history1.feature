@@ -24,3 +24,8 @@ Feature: Acesso ao Menu
     Given que entrei na página de informaçoes do The Town 'https://thetown.com.br/pt/informacoes/'
     When descer, na página, até sessão de DÚVIDAS MAIS FREQUENTES e clicar no link 'LINE UP'
     Then devo ser direcionado para 'https://thetown.com.br/pt/lineup/'
+
+  Scenario: 1.8 Redirecionar para FAQ com FAQ SAIBA MAIS
+    Given estou em 'https://thetown.com.br/pt/informacoes/' da página do The Town
+    When clicar no link 'FAQ' SAIBA MAIS
+    Then devo ir para a página 'https://thetown.com.br/pt/faqs/'
