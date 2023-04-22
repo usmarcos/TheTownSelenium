@@ -29,3 +29,24 @@ Feature: Acesso ao Menu
     Given estou em 'https://thetown.com.br/pt/informacoes/' da página do The Town
     When clicar no link 'FAQ' SAIBA MAIS
     Then devo ir para a página 'https://thetown.com.br/pt/faqs/'
+
+  Scenario: 1.9 Redirecionar para noticias
+    Given que a partir da pagina de informações 'https://thetown.com.br/pt/informacoes/' quero acessar a pagina de noticias
+    When clicar no link de noticias 'NOTÍCIAS' SAIBA MAIS
+    Then devo ser redirecionado para a pagina de noticias 'https://thetown.com.br/pt/noticias/'
+
+  Scenario: 1.10 Voltar para a pagina inicial
+    Given que na pagina de informações 'https://thetown.com.br/pt/informacoes/' quero acessar a pagina HOME
+    When clicar no link home 'HOME'
+    Then devo voltar para a página inicial 'https://thetown.com.br/pt/'
+
+  Scenario: 1.11 Clicar no link do patrocinador master
+    Given que clico no link de 'INFORMAÇÕES' a partir de 'https://thetown.com.br/pt/'
+    When descer na página de informações e clicar na imagem da Heineken Patrocinador master
+    Then devo ser direcionado para a página da heineken brasil 'https://www.heinekenbrasil.com.br/?utm_source=site&utm_medium=the_town&utm_content=site_thetown_patrocinador&utm_campaign=thetown_heineken'
+
+  Scenario: 1.18 Funcionamento da pagina Trabalhe conosco
+    Given que a partir da pagina home 'https://thetown.com.br/pt/', clico no link de 'INFORMAÇÕES'
+    When descer a pagina até o rodapé
+    And clicar em 'O FESTIVAL'
+    Then devo ser direcionado para a página de festival 'https://thetown.com.br/pt/festival/'

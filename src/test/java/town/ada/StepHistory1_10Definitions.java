@@ -11,39 +11,41 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class StepHistory1_8Definitions {
+public class StepHistory1_10Definitions {
     private WebDriver driver;
+
     @Before
     public void setup() {
         /*
         System.setProperty("webdriver.chrome.driver", "drive\\chromedriver.exe");
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         driver = new ChromeDriver();
-
-     */
+        */
     }
 
-    @Dado("estou em {string} da página do The Town")
-    public void estou_em_informacoes_do_the_town(String url) {
+    @Dado("que na pagina de informações {string} quero acessar a pagina HOME")
+    public void quero_ir_para_pagina_home(String url) {
         driver.get(url);
         driver.manage().window().maximize();
+        //Aceitando os termos dos cookies
         driver.findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
     }
 
-    @Quando("clicar no link {string} SAIBA MAIS")
-    public void clicar_no_link_faq_saiba_mais(String faq) {
+    @Quando("clicar no link home {string}")
+    public void clicar_no_link_home(String home) {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("scrollBy(0,2900)", "");
         this.waitLoad(3000L);
-        driver.findElement(By.partialLinkText(faq)).click();
+        driver.findElement(By.partialLinkText(home)).click();
     }
 
-    @Entao("devo ir para a página {string}")
-    public void devo_ir_para_a_pagina_faq(String url) {
+    @Entao("devo voltar para a página inicial {string}")
+    public void devo_voltar_para_pagina_inicial(String url) {
         String linkUrl = driver.getCurrentUrl();
         this.waitLoad(2000L);
         Assertions.assertTrue(linkUrl.equals(url));
     }
+
     @After
     public void stop() {
         //driver.quit();
