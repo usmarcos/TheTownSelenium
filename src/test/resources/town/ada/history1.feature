@@ -19,3 +19,8 @@ Feature: Acesso ao Menu
     Given que entrei na página de informações 'https://thetown.com.br/pt/informacoes/'
     When descer a página até a sessão de DÚVIDAS MAIS FREQUENTES e clicar no botão 'VER TODAS AS DÚVIDAS'
     Then devo ser direcionado para a página 'https://thetown.com.br/pt/faqs/'
+
+  Scenario: 1.7 Redirecionar para o Line Up
+    Given que entrei na página de informaçoes do The Town 'https://thetown.com.br/pt/informacoes/'
+    When descer, na página, até sessão de DÚVIDAS MAIS FREQUENTES e clicar no link 'LINE UP'
+    Then devo ser direcionado para 'https://thetown.com.br/pt/lineup/'

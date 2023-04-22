@@ -16,9 +16,11 @@ public class StepHistory1_5Definition {
 
     @Before
     public void setup() {
+        /*
         System.setProperty("webdriver.chrome.driver", "drive\\chromedriver.exe");
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         driver = new ChromeDriver();
+        */
     }
 
     @Dado("que já estou na página de informações {string}")
@@ -45,7 +47,7 @@ public class StepHistory1_5Definition {
 
     @After
     public void stop() {
-       driver.quit();
+       //driver.quit();
     }
 
     private void waitLoad(Long time) {
