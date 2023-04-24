@@ -3,7 +3,7 @@ Feature: Acesso ao Menu
   Scenario: 1.1 Acesso a pagina de informações
     Given que estou na página do the town 'https://thetown.com.br/pt/'
     When clicar no link 'Informações'
-    Then devo ser redirecionado para a pagina de '/informacoes'
+    Then devo ser redirecionado para a pagina de 'https://thetown.com.br/pt/informacoes/'
 
   Scenario: 1.4 Abrir corretamente dropdown das Duvidas mais frequentes Quando e onde acontecerá
     Given que estou na página de informações 'https://thetown.com.br/pt/informacoes/'
@@ -44,6 +44,11 @@ Feature: Acesso ao Menu
     Given que clico no link de 'INFORMAÇÕES' a partir de 'https://thetown.com.br/pt/'
     When descer na página de informações e clicar na imagem da Heineken Patrocinador master
     Then devo ser direcionado para a página da heineken brasil 'https://www.heinekenbrasil.com.br/?utm_source=site&utm_medium=the_town&utm_content=site_thetown_patrocinador&utm_campaign=thetown_heineken'
+
+  Scenario: 1.12 Clicar no Link de apoio institucional
+    Given que na pagina 'https://thetown.com.br/pt/informacoes/' quero acessar o link de apoio institucional
+    When descer até apoio institucional e clicar no incone do estado de SP
+    Then devo ser redirecionado para 'https://www.capital.sp.gov.br/?utm_source=site&utm_medium=the_town&utm_content=site_thetown_apoio&utm_campaign=thetown_cidadedesaopaulo'
 
   Scenario: 1.18 Funcionamento da pagina Trabalhe conosco
     Given que a partir da pagina home 'https://thetown.com.br/pt/', clico no link de 'INFORMAÇÕES'

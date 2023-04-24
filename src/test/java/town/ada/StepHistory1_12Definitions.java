@@ -2,9 +2,7 @@ package town.ada;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.When;
 import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.junit.jupiter.api.Assertions;
@@ -13,49 +11,43 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class StepHistory1_18Definitions {
+public class StepHistory1_12Definitions {
     private WebDriver driver;
 
     @Before
     public void setup() {
-        /*
         System.setProperty("webdriver.chrome.driver", "drive\\chromedriver.exe");
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         driver = new ChromeDriver();
-        */
     }
 
-    @Dado("que a partir da pagina home {string}, clico no link de {string}")
-    public void clico_no_link_festival(String url, String link) {
+    @Dado("que na pagina {string} quero acessar o link de apoio institucional")
+    public void quero_acessar_pagina_apoio_institucional(String url) {
         driver.get(url);
         driver.manage().window().maximize();
         //Aceitando os termos dos cookies
         driver.findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
-        driver.findElement(By.linkText(link)).click();
+        driver.findElement(By.linkText("INFORMAÇÕES")).click();
     }
 
-    @Quando("descer a pagina até o rodapé")
-    public void descer_a_pagina_ate_rodape() {
+    @Quando("descer até apoio institucional e clicar no incone do estado de SP")
+    public void clicar_no_icone_estado_sp() {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("scrollBy(0,4500)", "");
+        jse.executeScript("scrollBy(0,3200)", "");
         this.waitLoad(3000L);
+        driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/a")).click();
     }
 
-    @E("clicar em {string}")
-    public void clicar_em_o_festival(String festival) {
-        driver.findElement(By.linkText(festival)).click();
-    }
-
-    @Entao("devo ser direcionado para a página de festival {string}")
-    public void devo_ser_direcionado_para_festival(String url) {
-        String linkUrl = driver.getCurrentUrl();
+    @Entao("devo ser redirecionado para {string}")
+    public void devo_ser_redirecionado_para_pagina_estado_sp(String url) {
         this.waitLoad(2000L);
-        Assertions.assertTrue(linkUrl.equals(url));
+        driver.get(url);
+        Assertions.assertTrue(url.equals(driver.getCurrentUrl()));
     }
 
     @After
     public void stop() {
-        //driver.quit();
+        driver.quit();
     }
 
     private void waitLoad(Long time) {
