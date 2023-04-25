@@ -10,12 +10,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class StepDefinitions {
-    @Given("an example scenario")
-    public void anExampleScenario() {}
+    protected static WebDriver driver;
 
-    @When("all step definitions are implemented")
-    public void allStepDefinitionsAreImplemented() {}
+    @Before
+    public void setup() {
+        System.setProperty("webdriver.chrome.driver", "drive\\chromedriver.exe");
+        System.setProperty("webdriver.http.factory", "jdk-http-client");
+        driver = new ChromeDriver();
+    }
 
-    @Then("the scenario passes")
-    public void theScenarioPasses() {}
+    @After
+    public void stop() {
+        driver.quit();
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+    public static void waitLoad(Long time) {
+        try {
+            Thread.sleep(time);
+        } catch (Exception e) {
+            System.out.println("Não deu certo");
+        }
+    }
 }
