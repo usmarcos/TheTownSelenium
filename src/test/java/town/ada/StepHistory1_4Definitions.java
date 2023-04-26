@@ -1,7 +1,5 @@
 package town.ada;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Quando;
@@ -9,19 +7,12 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import static town.ada.StepDefinitions.getDriver;
+import static town.ada.StepDefinitions.waitLoad;
 
 public class StepHistory1_4Definitions {
-    private WebDriver driver;
-
-    /*
-    @Before
-    public void setup() {
-        //System.setProperty("webdriver.chrome.driver", "drive\\chromedriver.exe");
-        //System.setProperty("webdriver.http.factory", "jdk-http-client");
-        //driver = new ChromeDriver();
-    }
-    */
+    private WebDriver driver = getDriver();
 
     @Dado("que estou na página de informações {string}")
     public void estou_na_pagina_informacoes(String url) {
@@ -38,7 +29,7 @@ public class StepHistory1_4Definitions {
         jse.executeScript("scrollBy(0,2346)", "");
         /*Aguardar o carregamento da página, caso contrário retorna erro pois o botão de dropdown não aparece e não
         * fica clicável*/
-        this.waitLoad(3000L);
+        waitLoad(3000L);
         driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/section[6]/div[2]/div[1]/div[1]/h2/button")).click();
     }
 
@@ -48,20 +39,5 @@ public class StepHistory1_4Definitions {
         String txt2 = driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/section[6]/div[2]/div[1]/div[1]/div/div/p[2]")).getText();
         Assertions.assertEquals(texto1, txt1);
         Assertions.assertEquals(texto2, txt2);
-    }
-
-    /*
-    @After
-    public void stop() {
-        driver.quit();
-    }
-    */
-
-    private void waitLoad(Long time) {
-        try {
-            Thread.sleep(time);
-        } catch (Exception e) {
-            System.out.println("Não deu certo");
-        }
     }
 }
