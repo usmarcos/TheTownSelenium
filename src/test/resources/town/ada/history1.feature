@@ -5,6 +5,13 @@ Feature: Acesso ao Menu
     When clicar no link 'Informações'
     Then devo ser redirecionado para a pagina de 'https://thetown.com.br/pt/informacoes/'
 
+  Scenario: 1.2 EXIBIR OS BALÕES DE LEITURA CORRETAMENTE NO MAPA INTERATIVO
+    Given que clico no menu 'Informações' na pagina 'https://thetown.com.br/pt/'
+    When descer até o mapa interativo
+    And clico no balão com numero 6
+    Then deverá aparecer a mensagem com as informações do palco 'Factory'
+
+
   Scenario: 1.4 Abrir corretamente dropdown das Duvidas mais frequentes Quando e onde acontecerá
     Given que estou na página de informações 'https://thetown.com.br/pt/informacoes/'
     When descer a página até a sessão de DÚVIDAS MAIS FREQUENTES e selecionado o dropdown de QUANDO E ONDE ACONTECERÁ

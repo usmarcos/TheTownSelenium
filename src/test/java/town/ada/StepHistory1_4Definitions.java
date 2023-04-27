@@ -18,6 +18,7 @@ public class StepHistory1_4Definitions {
     public void estou_na_pagina_informacoes(String url) {
         driver.get(url);
         driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
     }
 
     @Quando("descer a página até a sessão de DÚVIDAS MAIS FREQUENTES e selecionado o dropdown de QUANDO E ONDE ACONTECERÁ")
