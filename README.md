@@ -6,7 +6,7 @@
 <ul>
   <li>Java 8 ou superior</li>
   <li>Maven</li>
-  <li>ChromeDriver</li>
+  <li>EdgeDriver</li>
 </ul>
 <h2>Como Executar</h2>
 <p>Para executar os testes, siga as instruções abaixo:</p>
