@@ -6,7 +6,6 @@ import io.cucumber.java.pt.Quando;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static town.ada.core.DriverFactory.getDriver;
@@ -37,6 +36,6 @@ public class StepHistory1_6Definitions {
     public void devo_ser_direcionado_para_faq(String url) {
         waitLoad(3000L);
         String page = getDriver().getCurrentUrl();
-        Assertions.assertTrue(page.equals(url));
+        Assertions.assertEquals(page, url);
     }
 }

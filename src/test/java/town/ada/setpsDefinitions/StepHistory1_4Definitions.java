@@ -6,7 +6,6 @@ import io.cucumber.java.pt.Quando;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 
 import static town.ada.core.DriverFactory.getDriver;
 import static town.ada.core.DriverFactory.waitLoad;
@@ -35,7 +34,8 @@ public class StepHistory1_4Definitions {
     }
 
     @Then("deverá ser exibido em tela as seguintes informações {string} {string} e {string} {string}")
-    public void devera_exibir_informacoes(String texto1, String xpath1, String texto2, String xpath2) {
+    public void devera_exibir_informacoes(String texto1, String xpath1, String texto2, String xpath2) throws InterruptedException {
+        Thread.sleep(2000);
         String txt1 = getDriver().findElement(By.xpath(xpath1)).getText();
         String txt2 = getDriver().findElement(By.xpath(xpath2)).getText();
         Assertions.assertEquals(texto1, txt1);

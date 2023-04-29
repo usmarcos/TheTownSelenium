@@ -5,7 +5,6 @@ import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import static town.ada.core.DriverFactory.getDriver;
 
@@ -26,8 +25,9 @@ public class StepHistory1_1Definitions {
     }
 
     @Entao("devo ser redirecionado para a pagina de {string}")
-    public void i_must_be_redirect_to_informations_page(String informations) {
+    public void i_must_be_redirect_to_informations_page(String informations) throws InterruptedException {
+        Thread.sleep(2000);
         String page = getDriver().getCurrentUrl();
-        Assertions.assertTrue(page.equals(informations));
+        Assertions.assertEquals(page, informations);
     }
 }

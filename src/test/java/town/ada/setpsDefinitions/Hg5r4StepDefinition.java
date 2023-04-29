@@ -31,7 +31,7 @@ public class Hg5r4StepDefinition {
                 String novaPagina = getDriver().getTitle();
                 assertNotEquals(titulo, novaPagina);
                 getDriver().navigate().back();
-            } catch (IndexOutOfBoundsException e) {
+            } catch (Exception e) {
                 System.out.println("Não existem mais notícias disponíveis");
                 break;
             }

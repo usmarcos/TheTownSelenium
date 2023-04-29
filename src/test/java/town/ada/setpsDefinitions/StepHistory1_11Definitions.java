@@ -6,7 +6,6 @@ import io.cucumber.java.pt.Entao;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static town.ada.core.DriverFactory.getDriver;
@@ -39,6 +38,6 @@ public class StepHistory1_11Definitions {
             window = w;
         }
         String newUrl = getDriver().switchTo().window(window).getCurrentUrl();
-        Assertions.assertTrue(newUrl.equals(url));
+        Assertions.assertEquals(newUrl, url);
     }
 }

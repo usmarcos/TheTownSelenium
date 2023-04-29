@@ -76,11 +76,12 @@ public class Hg5r2StepDefinition {
 
     @Test
     @Então("quando clico nos dias exibidos o usuário deve ser redirecionado para a URL do dia disponível")
-    public void quandoClicoNosDiasExibidosOUsuárioDeveSerRedirecionadoParaAURLDoDiaDisponível() {
+    public void quandoClicoNosDiasExibidosOUsuárioDeveSerRedirecionadoParaAURLDoDiaDisponível() throws InterruptedException {
         for (int i = 1; i <= 10; i++) {
             try {
                 String dia = getDriver().findElements(By.xpath("//*[@id=\"__next\"]/div[2]/div[1]/div[3]/div[" + i + "]/a")).get(0).getText();
                 getDriver().findElement(By.linkText(dia)).click();
+                Thread.sleep(2000);
                 assertEquals(getDriver().getCurrentUrl(), "https://thetown.com.br/pt/lineup/dia/" + dia + "/");
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Não há mais dias disponíveis");
