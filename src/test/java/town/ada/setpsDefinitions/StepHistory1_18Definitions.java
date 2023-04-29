@@ -13,32 +13,31 @@ import static town.ada.core.DriverFactory.getDriver;
 import static town.ada.core.DriverFactory.waitLoad;
 
 public class StepHistory1_18Definitions {
-    private WebDriver driver = getDriver();
 
     @Dado("que a partir da pagina home {string}, clico no link de {string}")
     public void clico_no_link_festival(String url, String link) {
-        driver.get(url);
-        driver.manage().window().maximize();
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
         //Aceitando os termos dos cookies
-        driver.findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
-        driver.findElement(By.linkText(link)).click();
+        getDriver().findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
+        getDriver().findElement(By.linkText(link)).click();
     }
 
     @Quando("descer a pagina até o rodapé")
     public void descer_a_pagina_ate_rodape() {
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        JavascriptExecutor jse = (JavascriptExecutor)getDriver();
         jse.executeScript("scrollBy(0,4500)", "");
         waitLoad(3000L);
     }
 
     @E("clicar em {string}")
     public void clicar_em_o_festival(String festival) {
-        driver.findElement(By.linkText(festival)).click();
+        getDriver().findElement(By.linkText(festival)).click();
     }
 
     @Entao("devo ser direcionado para a página de festival {string}")
     public void devo_ser_direcionado_para_festival(String url) {
-        String linkUrl = driver.getCurrentUrl();
+        String linkUrl = getDriver().getCurrentUrl();
         waitLoad(2000L);
         Assertions.assertTrue(linkUrl.equals(url));
     }

@@ -12,25 +12,25 @@ import static town.ada.core.DriverFactory.getDriver;
 import static town.ada.core.DriverFactory.waitLoad;
 
 public class StepHistory1_7Definitions {
-    private WebDriver driver = getDriver();
+
     @Dado("que entrei na página de informaçoes do The Town {string}")
     public void entrei_na_pagina_de_informacoes(String url) {
-        driver.get(url);
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        getDriver().findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
     }
 
     @When("descer, na página, até sessão de DÚVIDAS MAIS FREQUENTES e clicar no link {string}")
     public void clicar_no_link_line_up(String link) {
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        JavascriptExecutor jse = (JavascriptExecutor)getDriver();
         jse.executeScript("scrollBy(0,2900)", "");
         waitLoad(3000L);
-        driver.findElement(By.partialLinkText(link)).click();
+        getDriver().findElement(By.partialLinkText(link)).click();
     }
 
     @Then("devo ser direcionado para {string}")
     public void devo_ser_redirecionado_para(String url) {
-        String linkUrl = driver.getCurrentUrl();
+        String linkUrl = getDriver().getCurrentUrl();
         waitLoad(2000L);
         Assertions.assertTrue(linkUrl.equals(url));
     }

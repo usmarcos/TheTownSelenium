@@ -14,32 +14,31 @@ import static town.ada.core.DriverFactory.getDriver;
 import static town.ada.core.DriverFactory.waitLoad;
 
 public class StepHistory1_2Definitions {
-    private WebDriver driver = getDriver();
 
     @Dado("que clico no menu {string} na pagina {string}")
     public void clico_no_menu_informacoes(String informacoes, String url) {
-        driver.get(url);
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
-        driver.findElement(By.linkText(informacoes.toUpperCase())).click();
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        getDriver().findElement(By.xpath("//*[@id=\"msg-cookie\"]/div/div/button")).click();
+        getDriver().findElement(By.linkText(informacoes.toUpperCase())).click();
     }
 
     @Quando("descer até o mapa interativo")
     public void descer_ate_mapa_interativo() {
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        JavascriptExecutor jse = (JavascriptExecutor)getDriver();
         jse.executeScript("scrollBy(0,1500)", "");
         waitLoad(3000L);
     }
 
     @E("clico no balão com numero 6")
     public void clico_no_balao_numero_6() {
-        Point point = driver.findElement(By.xpath("//*[@id=\"map\"]/div[1]/div[4]/div[6]")).getLocation();
+        Point point = getDriver().findElement(By.xpath("//*[@id=\"map\"]/div[1]/div[4]/div[6]")).getLocation();
         System.out.println(point);
     }
 
     @Entao("deverá aparecer a mensagem com as informações do palco {string}")
     public void devera_aparecer_mensagem_skyline(String texto) {
-        String txt = driver.findElement(By.className("leaflet-popup-content")).getText();
+        String txt = getDriver().findElement(By.className("leaflet-popup-content")).getText();
         waitLoad(1000L);
         Assertions.assertTrue(txt.contains(texto));
     }
