@@ -33,9 +33,10 @@
 <h2>Contribuindo</h2>
 <p>Este projeto é de código aberto e qualquer pessoa é livre para contribuir com melhorias e correções de bugs. Se você quiser contribuir, por favor, faça um fork deste repositório e envie suas alterações por meio de pull requests.</p>
 <h2>Licença</h2>
-<p>Este projeto é licenciado sob a Licença MIT - consulte o arquivo LICENSE.md para mais detalhes.</p>
-  ## Informações extras:
+<p>Este projeto é licenciado sob a Licença MIT - consulte o arquivo LICENSE.md para mais detalhes.</p> 
+</div>
+
+ ## Informações extras:
   <p>Última execução realizada.</p>
   <img src="https://user-images.githubusercontent.com/67884162/235322230-0ba63ebb-ef2a-429b-9a63-b0bf02ac3d0a.png" alt="Cucumber Test">
 
-</div>
