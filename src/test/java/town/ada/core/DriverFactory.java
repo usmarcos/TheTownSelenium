@@ -14,10 +14,18 @@ public class DriverFactory {
         return driver;
     }
 
-    public static void killDriver(){
-        if(driver != null) {
+    public static void killDriver() {
+        if (driver != null) {
             driver.quit();
             driver = null;
+        }
+    }
+
+    public static void waitLoad(Long time) {
+        try {
+            Thread.sleep(time);
+        } catch (Exception e) {
+            System.out.println("Não deu certo");
         }
     }
 }

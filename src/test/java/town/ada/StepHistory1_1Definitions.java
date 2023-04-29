@@ -6,9 +6,8 @@ import io.cucumber.java.pt.Quando;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import static town.ada.StepDefinitions.getDriver;
+import static town.ada.core.DriverFactory.getDriver;
 
 /*
  *You're not allowed to extend classes that define Step Definitions or hooks.

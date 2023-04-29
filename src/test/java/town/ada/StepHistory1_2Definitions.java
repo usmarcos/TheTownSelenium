@@ -10,8 +10,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 
-import static town.ada.StepDefinitions.getDriver;
-import static town.ada.StepDefinitions.waitLoad;
+import static town.ada.core.DriverFactory.getDriver;
+import static town.ada.core.DriverFactory.waitLoad;
 
 public class StepHistory1_2Definitions {
     private WebDriver driver = getDriver();

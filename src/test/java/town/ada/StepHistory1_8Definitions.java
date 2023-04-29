@@ -1,7 +1,5 @@
 package town.ada;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
@@ -9,10 +7,9 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import static town.ada.StepDefinitions.getDriver;
-import static town.ada.StepDefinitions.waitLoad;
+import static town.ada.core.DriverFactory.getDriver;
+import static town.ada.core.DriverFactory.waitLoad;
 
 public class StepHistory1_8Definitions {
     private WebDriver driver = getDriver();
