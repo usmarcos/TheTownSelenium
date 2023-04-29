@@ -7,7 +7,9 @@ public class DriverFactory {
     private static WebDriver driver;
     public static WebDriver getDriver(){
         if (driver == null) {
+            System.setProperty("webdriver.edge.driver", "src/driver/msedgedriver.exe");
             driver = new EdgeDriver();
+
             driver.manage().window().maximize();
             driver.get("https://thetown.com.br/pt/");
         }
